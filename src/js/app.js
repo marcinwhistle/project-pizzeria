@@ -1,5 +1,5 @@
 import { settings, select } from './settings.js';
-import Product from './components/Products.js';
+import Product from './components/Product.js';
 import Cart from './components/Cart.js';
 
 const app = {
@@ -42,7 +42,7 @@ const app = {
 
     thisApp.productList = document.querySelector(select.containerOf.menu);
 
-    thisApp.productlist.addEventListener('add-to-cart', function (event) {
+    thisApp.productList.addEventListener('add-to-cart', function (event) {
       app.cart.add(event.detail.product);
     });
   },
