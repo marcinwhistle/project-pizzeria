@@ -5,7 +5,9 @@ class AmountWidget {
     const thisWidget = this;
 
     thisWidget.getElements(element);
-    thisWidget.setValue(settings.amountWidget.defaultValue);
+    thisWidget.setValue(
+      thisWidget.input.value || settings.amountWidget.defaultValue
+    );
     thisWidget.initActions();
   }
 
