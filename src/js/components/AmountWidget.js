@@ -65,7 +65,6 @@ class AmountWidget {
 
   announce() {
     const thisWidget = this;
-    console.log('thisWidget:', thisWidget);
     const event = new CustomEvent('updated', { bubbles: true });
     thisWidget.element.dispatchEvent(event);
   }

@@ -75,7 +75,6 @@ class CartProduct {
       },
     });
     thisCartProduct.dom.wrapper.dispatchEvent(event);
-    console.log('remove');
   }
   initActions() {
     const thisCartProduct = this;
