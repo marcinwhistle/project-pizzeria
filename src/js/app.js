@@ -49,7 +49,7 @@ const app = {
 
   init: function () {
     const thisApp = this;
-
+    console.log('test');
     thisApp.initData();
     thisApp.initCart();
   },
