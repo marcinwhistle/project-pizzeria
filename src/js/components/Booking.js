@@ -7,6 +7,7 @@ import HourPicker from './HourPicker.js';
 class Booking {
   constructor(element) {
     const thisBooking = this;
+    thisBooking.dataTable = null;
     thisBooking.render(element);
     thisBooking.initWidgets();
     thisBooking.getData();
@@ -189,6 +190,22 @@ class Booking {
     thisBooking.dom.tables = thisBooking.dom.wrapper.querySelectorAll(
       select.booking.tables
     );
+    thisBooking.dom.floorPlan = thisBooking.dom.wrapper.querySelector(
+      select.booking.floorPlan
+    );
+    //Q SEND SERVER
+    thisBooking.dom.button = thisBooking.dom.wrapper.querySelector(
+      select.booking.button
+    );
+    thisBooking.dom.phone = thisBooking.dom.wrapper.querySelector(
+      select.booking.phone
+    );
+    thisBooking.dom.address = thisBooking.dom.wrapper.querySelector(
+      select.booking.address
+    );
+    thisBooking.dom.starters = thisBooking.dom.wrapper.querySelectorAll(
+      select.booking.starters
+    );
   }
   initWidgets() {
     const thisBooking = this;
@@ -205,6 +222,79 @@ class Booking {
 
     thisBooking.dom.wrapper.addEventListener('updated', function () {
       thisBooking.updateDOM();
+    });
+    thisBooking.dom.floorPlan.addEventListener('click', function (event) {
+      thisBooking.initTables(event);
+    });
+    thisBooking.dom.datePicker.addEventListener('updated', function () {
+      thisBooking.resetTables();
+    });
+    thisBooking.dom.hourPicker.addEventListener('updated', function () {
+      thisBooking.resetTables();
+    });
+    //Q SEND SERVER
+    thisBooking.dom.button.addEventListener('click', function (event) {
+      event.preventDefault();
+      thisBooking.sendBooking();
+    });
+  }
+  resetTables() {
+    const thisBooking = this;
+    for (let table of thisBooking.dom.tables) {
+      table.classList.remove('selected');
+    }
+  }
+  initTables(event) {
+    const thisBooking = this;
+
+    if (event.target.classList.contains('table')) {
+      const clickOnTable = event.target;
+      if (clickOnTable.classList.contains('booked')) {
+        alert('Table is booked');
+      } else if (!clickOnTable.classList.contains('selected')) {
+        const selectedTable = clickOnTable.getAttribute('data-table');
+        thisBooking.dataTable = selectedTable;
+        thisBooking.resetTables();
+        clickOnTable.classList.add('selected');
+      } else {
+        clickOnTable.classList.remove('selected');
+        thisBooking.dataTable = null;
+      }
+    }
+  }
+  //Q SEND SERVER
+  sendBooking() {
+    const thisBooking = this;
+
+    //const url = settings.db.url + '/' + settings.db.bookings;
+
+    const payload = {
+      date: thisBooking.datePicker.value,
+      hour: thisBooking.hourPicker.value,
+      table: parseInt(thisBooking.dataTable),
+      duration: thisBooking.hoursAmount.value,
+      ppl: thisBooking.peopleAmount.value,
+      starters: [], // iteracja po tym elemencie
+      // dlaczego nie pobiera wartosci phone i address???
+      phone: thisBooking.dom.phone,
+      address: thisBooking.dom.address,
+    };
+    console.log('payload:', payload);
+
+    // tutaj wyciagamy startery i dodajemy do payload starters
+    const startersArray = [];
+    const checkbox = thisBooking.dom.starters;
+
+    checkbox.addEventListener('click', function (event) {
+      const startersFilter = event.target;
+      if (
+        startersFilter.tagName == 'INPUT' &&
+        startersFilter.name == 'starter' &&
+        startersFilter.type == 'checkbox'
+      ) {
+        const starterValue = startersFilter.value;
+        console.log(starterValue);
+      }
     });
   }
 }

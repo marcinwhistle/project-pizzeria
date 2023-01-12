@@ -43,6 +43,12 @@ export const select = {
     peopleAmount: '.people-amount',
     hoursAmount: '.hours-amount',
     tables: '.floor-plan .table',
+    floorPlan: '.floor-plan',
+    //Q SEND SERVER
+    button: '.order-confirmation button',
+    phoneNumber: 'input phone',
+    address: 'input address  ',
+    starters: '.booking-option-title .checkbox',
   },
   nav: {
     links: '.main-nav a',
