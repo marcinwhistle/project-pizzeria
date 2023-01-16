@@ -283,6 +283,7 @@ class Booking {
 
     // tutaj wyciagamy startery i dodajemy do payload starters
     const startersArray = [];
+    console.log(startersArray);
     const checkbox = thisBooking.dom.starters;
 
     checkbox.addEventListener('click', function (event) {

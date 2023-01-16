@@ -1,0 +1,39 @@
+.boxes {
+  padding: 30px;
+}
+
+.order-online {
+  background-color: blue;
+  border-radius: 5%;
+  width: 500px;
+  height: 150px;
+  display: inline-block;
+  margin: 10px;
+  padding: 10px;
+}
+
+.book-table {
+  background-color: yellow;
+  border-radius: 5%;
+  width: 500px;
+  height: 150px;
+  display: inline-block;
+  margin: 10px;
+  padding: 10px;
+}
+
+.opening-hours {
+  background-color: red;
+  border-radius: 5%;
+  width: 1020px;
+  height: 150px;
+  margin: 10px;
+  padding: 10px;
+}
+
+.carousel-cell {
+  width: 100%; /* half-width */
+  height: 160px;
+  margin-right: 10px;
+  display: flex;
+}
