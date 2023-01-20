@@ -198,7 +198,7 @@ class Booking {
       select.booking.button
     );
     thisBooking.dom.phone = thisBooking.dom.wrapper.querySelector(
-      select.booking.phone
+      select.booking.phoneNumber
     );
     thisBooking.dom.address = thisBooking.dom.wrapper.querySelector(
       select.booking.address
@@ -266,7 +266,7 @@ class Booking {
   sendBooking() {
     const thisBooking = this;
 
-    //const url = settings.db.url + '/' + settings.db.bookings;
+    const url = settings.db.url + '/' + settings.db.bookings;
 
     const payload = {
       date: thisBooking.datePicker.value,
@@ -274,29 +274,31 @@ class Booking {
       table: parseInt(thisBooking.dataTable),
       duration: thisBooking.hoursAmount.value,
       ppl: thisBooking.peopleAmount.value,
-      starters: [], // iteracja po tym elemencie
-      // dlaczego nie pobiera wartosci phone i address???
-      phone: thisBooking.dom.phone,
-      address: thisBooking.dom.address,
+      starters: [],
+      phone: thisBooking.dom.phone.value,
+      address: thisBooking.dom.address.value,
     };
     console.log('payload:', payload);
 
     // tutaj wyciagamy startery i dodajemy do payload starters
-    const startersArray = [];
-    console.log(startersArray);
-    const checkbox = thisBooking.dom.starters;
+    for (let starter of thisBooking.dom.starters) {
+      if (starter.checked) payload.starters.push(starter.value);
+    }
+    const options = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    };
 
-    checkbox.addEventListener('click', function (event) {
-      const startersFilter = event.target;
-      if (
-        startersFilter.tagName == 'INPUT' &&
-        startersFilter.name == 'starter' &&
-        startersFilter.type == 'checkbox'
-      ) {
-        const starterValue = startersFilter.value;
-        console.log(starterValue);
-      }
-    });
+    fetch(url, options).then(
+      thisBooking.makeBooked(
+        payload.date,
+        payload.hour,
+        payload.duration,
+        payload.table
+      ),
+      thisBooking.updateDOM()
+    );
   }
 }
 

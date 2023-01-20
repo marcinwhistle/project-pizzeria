@@ -46,9 +46,9 @@ export const select = {
     floorPlan: '.floor-plan',
     //Q SEND SERVER
     button: '.order-confirmation button',
-    phoneNumber: 'input phone',
-    address: 'input address  ',
-    starters: '.booking-option-title .checkbox',
+    phoneNumber: 'input[name="phone"]',
+    address: 'input[name="address"]  ',
+    starters: 'input[name="starter"]',
   },
   nav: {
     links: '.main-nav a',
