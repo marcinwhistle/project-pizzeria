@@ -1,27 +1,26 @@
-import { templates, select } from '../settings';
-import utils from '../utils.js';
+//import { select, classNames } from '../settings.js';
 
 class Home {
   constructor() {
-    const thisHome = this;
-
-    thisHome.render();
+    //const thisHome = this;
+    //thisHome.activateBoxes();
   }
-  render() {
-    const thisHome = this;
+  // activateBoxes() {
+  //   const thisHome = this;
+  //   const orderOnline = document.querySelector(select.containerOf.orderOnline);
+  //   //const bookTable = document.querySelector(select.containerOf.bookTable);
 
-    /* generate HTML based on template */
-    const generatedHTML = templates.homepage;
-    /* create element using utils.createElementFromHTML */
-    thisHome.element = utils.createDOMFromHTML(generatedHTML);
-    /* find menu container */
-    const homepageContainer = document.querySelector(
-      select.containerOf.homepage
-    );
-    /* add element to menu */
-    homepageContainer.appendChild(thisHome.element);
-  }
+  //   orderOnline.addEventListener('click', function (event) {
+  //     const clickedElement = this;
+  //     event.preventDefault();
+
+  //     console.log('click');
+  //     const id = clickedElement.getAttribute('id').replace('#', '');
+  //     console.log(id);
+
+  //     window.location.hash = '#/' + id;
+  //   });
+  // }
 }
 
-//event listener getAttribute
 export default Home;

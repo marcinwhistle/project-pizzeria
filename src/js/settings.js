@@ -10,6 +10,8 @@ export const select = {
     cart: '#cart',
     pages: '#pages',
     booking: '.booking-wrapper',
+    orderOnline: '.order-online',
+    bookTable: '.book-table',
   },
   all: {
     menuProducts: '#product-list > .product',
