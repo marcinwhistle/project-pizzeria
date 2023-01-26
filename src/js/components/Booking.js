@@ -155,9 +155,7 @@ class Booking {
       }
       if (
         !allAvailable &&
-        thisBooking.booked[thisBooking.date][thisBooking.hour].includes(
-          tableId
-        ) > -1
+        thisBooking.booked[thisBooking.date][thisBooking.hour].includes(tableId)
       ) {
         table.classList.add(classNames.booking.tableBooked);
       } else {
@@ -280,7 +278,6 @@ class Booking {
     };
     console.log('payload:', payload);
 
-    // tutaj wyciagamy startery i dodajemy do payload starters
     for (let starter of thisBooking.dom.starters) {
       if (starter.checked) payload.starters.push(starter.value);
     }
@@ -297,7 +294,8 @@ class Booking {
         payload.duration,
         payload.table
       ),
-      thisBooking.updateDOM()
+      thisBooking.updateDOM(),
+      thisBooking.resetTables()
     );
   }
 }

@@ -1,39 +1,161 @@
-.boxes {
-  padding: 30px;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.homepage {
+  max-width: 1040px;
+  margin: 0 auto;
+}
+
+.boxes-container {
+  margin-top: 50px;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
 }
 
 .order-online {
   background-color: blue;
-  border-radius: 5%;
+  text-align: center;
+  border-radius: 2%;
   width: 500px;
   height: 150px;
-  display: inline-block;
+  padding: 20px;
   margin: 10px;
-  padding: 10px;
+  background-image: url('/images/assets/pizza-1.jpg');
+  flex: 2;
+}
+
+.order-online h2 {
+  color: white;
+  font-size: 30px;
+  margin-top: 25px;
+  transition-duration: 1s;
+}
+
+.order-online h2:hover {
+  color: white;
+  font-size: 30px;
+  margin-top: 5px;
 }
 
 .book-table {
   background-color: yellow;
-  border-radius: 5%;
+  text-align: center;
+  border-radius: 2%;
   width: 500px;
   height: 150px;
-  display: inline-block;
+  padding: 20px;
   margin: 10px;
-  padding: 10px;
+  background-image: url('/images/assets/pizza-2.jpg');
+  flex: 2;
+}
+
+.book-table h2 {
+  color: white;
+  font-size: 30px;
+  margin-top: 25px;
+  transition-duration: 1s;
+}
+
+.book-table h2:hover {
+  color: white;
+  font-size: 30px;
+  margin-top: 10px;
 }
 
 .opening-hours {
   background-color: red;
-  border-radius: 5%;
-  width: 1020px;
+  text-align: center;
+  border-radius: 2%;
+  width: 660px;
   height: 150px;
+  padding: 20px;
   margin: 10px;
-  padding: 10px;
+}
+
+.opening-hours h1, h2 {
+  color: white;
+  font-size: 30px;
+  margin-top: 15px;
 }
 
 .carousel-cell {
-  width: 100%; /* half-width */
-  height: 160px;
-  margin-right: 10px;
   display: flex;
+  justify-content: center;
+  width: 100%; /* half-width */
+  height: 320px;
+  padding: 10px;
+  margin: 10px;
+}
+
+.carousel img {
+  width: 100%;
+  height: 250px;
+  padding-right: 20px;
+}
+
+.flickity-button {
+  background: transparent;
+  display: none;
+}
+
+.carousel {
+  margin: 50px 0;
+}
+
+.col-4 {
+  position: relative;
+}
+
+.gallery img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  margin: 5px;
+}
+
+.gallery i {
+  font-size: 50px;
+  color: red;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .3s ease;
+
+}
+
+.col-4:hover .overlay {
+  opacity: 1;
+}
+
+.icon {
+  color: white;
+  font-size: 100px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.fa-user:hover {
+  color: #eee;
+}
+
+.view-more h1 {
+  font-size: 14px;
 }
