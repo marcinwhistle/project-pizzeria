@@ -84,6 +84,7 @@ const app = {
   initMenu: function () {
     const thisApp = this;
 
+    console.log(thisApp.data);
     for (let productData in thisApp.data.products) {
       new Product(
         thisApp.data.products[productData].id,
