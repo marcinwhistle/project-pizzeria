@@ -1,6 +1,6 @@
 # Project Pizzeria
 Application for pizzeria written in JavaScript.
-> Live demo [https://react-waiter-app.lemarczini21.repl.co/.](https://project-pizzeria.lemarczini21.repl.co)
+> Live demo [https://project-pizzeria.lemarczini21.repl.co/](https://project-pizzeria.lemarczini21.repl.co)
 
 
 ## Technologies Used
